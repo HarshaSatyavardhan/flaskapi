@@ -8,6 +8,8 @@ Jinja2==3.0.3
 MarkupSafe==2.0.1
 Werkzeug==2.0.2
 
+flask_cors
+
 asgiref==3.4.1
 certifi==2021.10.8
 charset-normalizer==2.0.7
