@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import flask
+from flask_cors import CORS
 
 import torch
 import torch.nn as nn
@@ -363,6 +364,7 @@ model.eval()
 
 
 app = Flask(__name__)
+CORS(app)
 
 MODEL = None
 DEVICE = "cuda"
