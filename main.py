@@ -383,7 +383,7 @@ def predictions(solute, solvent):
 
 
     delta_g, interaction_map =  model([solute_graph.to(device), solvent_graph.to(device)])
-    return delta_g
+    return delta_g, interaction_map
 
 response = {}
 @app.route('/predict', methods=["POST", "GET"])
@@ -399,8 +399,8 @@ def predict():
 
     results = predictions(solute, solvent)
     print(results)
-    print(type(results.item()))
-    response["predictions"] = results.item()
+    response["predictions"] = results[0].item()
+    response["interaction_map"] = (results[1].detach().numpy()).tolist()
     return flask.jsonify({'result': response})
 
 
