@@ -383,7 +383,7 @@ def predictions(solute, solvent):
 
 
     delta_g, interaction_map =  model([solute_graph.to(device), solvent_graph.to(device)])
-    return delta_g, interaction_map
+    return delta_g, torch.trunc(interaction_map)
 
 response = {}
 @app.route('/predict', methods=["POST", "GET"])
